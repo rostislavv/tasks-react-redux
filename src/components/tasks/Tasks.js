@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { Button }  from 'semantic-ui-react';
-import { Grid, Header, Container, Divider, Icon }  from 'semantic-ui-react';
+import { Header, Container, Divider, Icon }  from 'semantic-ui-react';
 
 import { fetchLogout } from '../../actions/auth-actions';
 

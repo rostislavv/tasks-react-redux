@@ -1,5 +1,4 @@
 import { getCookie, deleteCookie } from './cookie';
-import history from './history'
 import _ from 'lodash'
 
 export function isLoggedIn() {
@@ -7,7 +6,7 @@ export function isLoggedIn() {
 }
 
 export function isLoggedOut() {
-  return _.isUndefined(getCookie('uid')) || getCookie('uid') == '';
+  return _.isUndefined(getCookie('uid')) || getCookie('uid') === '';
 }
 
 export function clearCookie() {

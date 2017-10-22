@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import _ from 'lodash'
 
 export const LOAD_TASKS = 'LOAD_TASKS';
 export const LOAD_TASKS_SUCCESS = 'LOAD_TASKS_SUCCESS';

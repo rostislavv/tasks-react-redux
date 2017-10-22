@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Modal, Button }  from 'semantic-ui-react';
-
-import { fetchTask, openModal, closeModal } from '../../actions/task-actions';
+import {
+  fetchTask, openModal, closeModal,
+  fetchSaveTask, fetchEditTask
+} from '../../actions/task-actions';
+import TaskForm from './Form';
 
 class TaskModal extends Component {
 
@@ -12,6 +15,15 @@ class TaskModal extends Component {
     this.props.dispatch(openModal());
   }
   handleClose = () => {
+    const { task, dispatch } = this.props;
+    if(this.props.modal_mode === 'add'){
+      this.props.dispatch(fetchSaveTask(task));
+    } else {
+      this.props.dispatch(fetchEditTask(task.id, task))
+    }
+    dispatch(closeModal());
+  }
+  handleExit = () => {
     this.props.dispatch(closeModal());
   }
 
@@ -20,15 +32,16 @@ class TaskModal extends Component {
     return (
       <Modal
          open={this.props.modal_open}
-         onClose={this.handleClose}
+         onClose={this.handleExit}
          closeIcon
          size='small'>
           <Modal.Header>{header}</Modal.Header>
           <Modal.Content>
             <p>Thats everything!</p>
+            <TaskForm />
           </Modal.Content>
           <Modal.Actions>
-            <Button icon='check' content='All Done' onClick={this.handleClose} />
+            <Button icon='check' content='Save' onClick={this.handleClose} />
           </Modal.Actions>
        </Modal>
     )

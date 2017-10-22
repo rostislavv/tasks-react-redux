@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import { encodeParams } from '../lib/encode';
 
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -50,10 +51,6 @@ export function logoutFailedActionCreator(message) {
   }
 }
 
-
-const encodeParams = params => Object.keys(params).map((key) => {
-  return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
-}).join('&');
 
 export function fetchLogin(username, password) {
   return dispatch => {

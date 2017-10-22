@@ -1,32 +1,48 @@
 import {
-  LOAD_TASK,
-  LOAD_TASK_SUCCESS,
-  LOAD_TASK_FAIL,
   OPEN_MODAL,
-  CLOSE_MODAL
+  CLOSE_MODAL,
+  CURRENT_CHANGE,
+  CURRENT_SET,
+  EDIT_TASK,
+  EDIT_TASK_SUCCESS,
+  EDIT_TASK_FAIL,
+  DELETE_TASK,
+  DELETE_TASK_SUCCESS,
+  DELETE_TASK_FAIL
 } from '../actions/task-actions';
-
+const initialTask = {
+    performer: '',
+    state: '',
+    description: ''
+}
 export default (state = {
   error: false,
   loading: false,
   task: {},
   modal_open: false,
-  modal_mode: 'add'
+  modal_mode: 'add',
 }, action) => {
   switch (action.type) {
-    case LOAD_TASK:
+    case EDIT_TASK:
+    case DELETE_TASK:
       return {
         ...state,
         loading: true,
         error: false,
       };
-    case LOAD_TASK_SUCCESS:
+    case EDIT_TASK_SUCCESS:
       return {
         ...state,
         loading: false,
-        task: action.task
       };
-    case LOAD_TASK_FAIL:
+    case DELETE_TASK_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        message: action.message
+      }
+    case EDIT_TASK_FAIL:
+    case DELETE_TASK_FAIL:
       return {
         ...state,
         loading: false,
@@ -37,13 +53,24 @@ export default (state = {
       return {
         ...state,
         modal_open: true,
-        modal_mode: action.mode
+        modal_mode: action.mode,
       }
     case CLOSE_MODAL:
       return {
         ...state,
         modal_open: false,
-        modal_mode: 'add'
+        modal_mode: 'add',
+      }
+    case CURRENT_CHANGE:
+      state.task[action.prop] = action.val;
+      return {
+        ...state,
+      }
+    case CURRENT_SET:
+      const newTask = _.isUndefined(action.task) ? _.clone(initialTask) : action.task;
+      return {
+        ...state,
+        task: newTask
       }
     default:
       return state;

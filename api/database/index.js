@@ -48,8 +48,18 @@ const query = (sql, params, single = true) => new Promise((resolve, reject) => {
   }
 );
 
+const run = (sql, params) =>
+  new Promise((resolve, reject) =>
+    db.run(sql, params, (err, row) => {
+      if(err){
+        reject(err);
+      }
+      resolve(row);
+    })
+  );
 
 
 module.exports.connection = db;
 module.exports.query = query;
+module.exports.run = run;
 module.exports.closeConnection = () => db.close();

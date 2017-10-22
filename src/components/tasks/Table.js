@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { fetchTasks } from '../../actions/tasks-actions';
-import { fetchTask, openModal, closeModal } from '../../actions/task-actions';
+import {
+  fetchTask, openModal, closeModal,
+  currentSet, fetchDeleteTask
+} from '../../actions/task-actions';
+
+import ConfirmModal from './ConfirmModal';
 
 class TasksTable extends Component {
   state = {
@@ -21,7 +26,22 @@ class TasksTable extends Component {
     this.setState({ data: tasks })
   }
 
-  showModal(type) {
+  deleteTask(id) {
+    this.refs.confirm.handleOpen(() => {
+      this.props.dispatch(fetchDeleteTask(id));
+    });
+  }
+
+  showModal(type, id) {
+    if(type === 'edit') {
+      this.props.dispatch(
+        currentSet(
+          _.find(this.props.tasks, { id })
+        )
+      )
+    } else {
+      this.props.dispatch(currentSet());
+    }
     this.props.dispatch(openModal(type));
   }
 
@@ -45,71 +65,74 @@ class TasksTable extends Component {
   render() {
     const { column, data, direction } = this.state
     return (
-      <Table sortable celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell
-              sorted={column === 'date' ? direction : null}
-              onClick={this.handleSort('date')}>
-              Date
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'description' ? direction : null}
-              onClick={this.handleSort('description')}>
-              Description
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'owner' ? direction : null}
-              onClick={this.handleSort('owner')}>
-              Owner
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'state' ? direction : null}
-              onClick={this.handleSort('state')}>
-              State
-            </Table.HeaderCell>
-            <Table.HeaderCell>
-              Edit
-            </Table.HeaderCell>
-            <Table.HeaderCell>
-              Delete
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {_.map(data, ({ id, owner, state, date, description }) => (
-            <Table.Row key={id}>
-              <Table.Cell>{date}</Table.Cell>
-              <Table.Cell>{description}</Table.Cell>
-              <Table.Cell>{owner}</Table.Cell>
-              <Table.Cell>{state}</Table.Cell>
-              <Table.Cell  textAlign='right' width='1'>
-                <Button icon size='small' color='green'
-                  onClick={() => this.showModal('edit')}>
-                  <Icon name='edit' />
-                </Button>
-              </Table.Cell>
-              <Table.Cell  textAlign='right' width='1'>
-                <Button icon size='small' color='red'
-                  onClick={() => console.log('Delete of ', id)}>
-                  <Icon name='delete' />
-                </Button>
-              </Table.Cell>
+      <div>
+        <Table sortable celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell
+                sorted={column === 'date' ? direction : null}
+                onClick={this.handleSort('date')}>
+                Date
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === 'description' ? direction : null}
+                onClick={this.handleSort('description')}>
+                Description
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === 'owner' ? direction : null}
+                onClick={this.handleSort('owner')}>
+                Owner
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === 'state' ? direction : null}
+                onClick={this.handleSort('state')}>
+                State
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                Edit
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                Delete
+              </Table.HeaderCell>
             </Table.Row>
-          ))}
-        </Table.Body>
-        <Table.Footer fullWidth>
-          <Table.Row>
-            <Table.HeaderCell colSpan='6'>
-              <Button floated='right' icon
-                labelPosition='left' primary size='small'
-                onClick={() => this.showModal('add')}>
-                <Icon name='tasks' /> Add Task
-              </Button>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
+          </Table.Header>
+          <Table.Body>
+            {_.map(data, ({ id, owner, state, date, description }) => (
+              <Table.Row key={id}>
+                <Table.Cell>{date}</Table.Cell>
+                <Table.Cell>{description}</Table.Cell>
+                <Table.Cell>{owner}</Table.Cell>
+                <Table.Cell>{state}</Table.Cell>
+                <Table.Cell  textAlign='right' width='1'>
+                  <Button icon size='small' color='green'
+                    onClick={() => this.showModal('edit', id)}>
+                    <Icon name='edit' />
+                  </Button>
+                </Table.Cell>
+                <Table.Cell  textAlign='right' width='1'>
+                  <Button icon size='small' color='red'
+                    onClick={() => this.deleteTask(id)}>
+                    <Icon name='delete' />
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+          <Table.Footer fullWidth>
+            <Table.Row>
+              <Table.HeaderCell colSpan='6'>
+                <Button floated='right' icon
+                  labelPosition='left' primary size='small'
+                  onClick={() => this.showModal('add')}>
+                  <Icon name='tasks' /> Add Task
+                </Button>
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+        </Table>
+        <ConfirmModal ref='confirm'/>
+      </div>
     )
   }
 }

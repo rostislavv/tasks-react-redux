@@ -12,7 +12,6 @@ export const LOGOUT_FAILED = 'LOGOUT_FAILED';
 export function loginActionCreator(username, password){
   return {
     type: LOGIN,
-    grant_type: 'password',
     username: username,
     password: password
   }

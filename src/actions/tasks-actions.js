@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch'
+//import fetch from 'isomorphic-fetch';
+import 'isomorphic-fetch'; // TODO - use global to mock
 import _ from 'lodash'
 
 export const LOAD_TASKS = 'LOAD_TASKS';
@@ -26,10 +27,10 @@ export function loadTasksFailActionCreator(err) {
   }
 }
 
-export function fetchTasks() {
+export function fetchTasks(host = '') {
   return dispatch => {
     dispatch(loadTasksActionCreator())
-    return fetch('/api/tasks', {
+    return fetch(host + '/api/tasks', {
       method: 'GET',
       credentials: 'include'
     })

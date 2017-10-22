@@ -1,0 +1,18 @@
+[  
+   {
+      "id":1,
+      "owner":"admin",
+      "performer":"admin",
+      "state":"open",
+      "date":"2017-10-22T21:38:53+02:00",
+      "description":"Admin-admin task, open"
+   },
+   {
+      "id":5,
+      "owner":"admin",
+      "performer":"user",
+      "state":"open",
+      "date":"2017-10-22T21:45:24+02:00",
+      "description":"basd"
+   }
+]

@@ -9,7 +9,7 @@ import { fetchLogin } from '../../actions/auth-actions';
 import { withRouter } from 'react-router-dom'
 
 
-class Login extends Component {
+export class Login extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);

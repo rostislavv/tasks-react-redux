@@ -22,7 +22,7 @@ class TasksTable extends Component {
     super(props);
 
     subscribeToUpdates(() => {
-      NotificationManager.info('Warning message', 'Tasks were updated', 3000);
+      NotificationManager.info('Warning message', 'Tasks were updated', 2000);
       this.props.dispatch(fetchTasks())
     })
   }

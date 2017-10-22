@@ -44,16 +44,6 @@ class TasksTable extends Component {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell
-              sorted={column === 'owner' ? direction : null}
-              onClick={this.handleSort('owner')}>
-              Owner
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'state' ? direction : null}
-              onClick={this.handleSort('state')}>
-              State
-            </Table.HeaderCell>
-            <Table.HeaderCell
               sorted={column === 'date' ? direction : null}
               onClick={this.handleSort('date')}>
               Date
@@ -63,6 +53,16 @@ class TasksTable extends Component {
               onClick={this.handleSort('description')}>
               Description
             </Table.HeaderCell>
+            <Table.HeaderCell
+              sorted={column === 'owner' ? direction : null}
+              onClick={this.handleSort('owner')}>
+              Owner
+            </Table.HeaderCell>
+            <Table.HeaderCell
+              sorted={column === 'state' ? direction : null}
+              onClick={this.handleSort('state')}>
+              State
+            </Table.HeaderCell>
             <Table.HeaderCell>
               Edit
             </Table.HeaderCell>
@@ -70,11 +70,11 @@ class TasksTable extends Component {
         </Table.Header>
         <Table.Body>
           {_.map(data, ({ id = 0, owner, state, date, description }) => (
-            <Table.Row key={date}>
-              <Table.Cell>{owner}</Table.Cell>
-              <Table.Cell>{state}</Table.Cell>
+            <Table.Row key={date + Math.random(0,10)}>
               <Table.Cell>{date}</Table.Cell>
               <Table.Cell>{description}</Table.Cell>
+              <Table.Cell>{owner}</Table.Cell>
+              <Table.Cell>{state}</Table.Cell>
               <Table.Cell  textAlign='right' width='1'>
                 <Button icon size='small' color='green' onClick={() => console.log('Edit of ', id)}>
                   <Icon name='edit' />

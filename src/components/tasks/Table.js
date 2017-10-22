@@ -67,7 +67,7 @@ class TasksTable extends Component {
     const { column, data, direction } = this.state
     return (
       <div>
-        <Table sortable celled>
+        <Table sortable celled selectable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell
@@ -91,9 +91,6 @@ class TasksTable extends Component {
                 State
               </Table.HeaderCell>
               <Table.HeaderCell>
-                Edit
-              </Table.HeaderCell>
-              <Table.HeaderCell>
                 Delete
               </Table.HeaderCell>
             </Table.Row>
@@ -101,16 +98,10 @@ class TasksTable extends Component {
           <Table.Body>
             {_.map(data, ({ id, owner, state, date, description }) => (
               <Table.Row key={id}>
-                <Table.Cell>{moment(date).format('YYYY-MM-DD HH:mm:ss')}</Table.Cell>
-                <Table.Cell>{description}</Table.Cell>
-                <Table.Cell>{owner}</Table.Cell>
-                <Table.Cell>{state}</Table.Cell>
-                <Table.Cell  textAlign='right' width='1'>
-                  <Button icon size='small' color='green'
-                    onClick={() => this.showModal('edit', id)}>
-                    <Icon name='edit' />
-                  </Button>
-                </Table.Cell>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{moment(date).format('YYYY-MM-DD HH:mm:ss')}</Table.Cell>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{description}</Table.Cell>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{owner}</Table.Cell>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{state}</Table.Cell>
                 <Table.Cell  textAlign='right' width='1'>
                   <Button icon size='small' color='red'
                     onClick={() => this.deleteTask(id)}>
@@ -122,7 +113,7 @@ class TasksTable extends Component {
           </Table.Body>
           <Table.Footer fullWidth>
             <Table.Row>
-              <Table.HeaderCell colSpan='6'>
+              <Table.HeaderCell colSpan='5'>
                 <Button floated='right' icon
                   labelPosition='left' primary size='small'
                   onClick={() => this.showModal('add')}>

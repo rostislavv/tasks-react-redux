@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
+import _ from 'lodash';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -22,12 +23,12 @@ class TaskForm extends Component {
       <Form>
         <Form.Group widths='equal'>
           <Form.Select label='Performer'
-            value={this.props.task.performer}
+            value={this.props.task.performer || _.head(performers)}
             options={performers.map(name => ({key: name, text: name, value: name}))}
             placeholder='Performer'
             onChange={this.handleChange('performer')} />
           <Form.Select label='State'
-            value={this.props.task.state}
+            value={this.props.task.state || _.head(states)}
             options={states.map(state => ({key: state, text: state, value: state}))}
             placeholder='State'
             onChange={this.handleChange('state')} />

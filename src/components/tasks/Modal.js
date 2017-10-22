@@ -37,7 +37,6 @@ class TaskModal extends Component {
          size='small'>
           <Modal.Header>{header}</Modal.Header>
           <Modal.Content>
-            <p>Thats everything!</p>
             <TaskForm />
           </Modal.Content>
           <Modal.Actions>

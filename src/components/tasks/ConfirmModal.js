@@ -30,7 +30,7 @@ class ConfirmModal extends Component {
          size='small'>
           <Modal.Header>Are you sure?</Modal.Header>
           <Modal.Actions>
-            <Button icon='check' content='Cancel'
+            <Button icon='delete' content='Cancel'
               color='green' onClick={this.handleExit} />
             <Button icon='check' content='Delete'
               color='red' onClick={this.handleDelete} />

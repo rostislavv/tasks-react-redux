@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Table, Button, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { fetchTasks } from '../../actions/tasks-actions';
 import {
@@ -100,7 +101,7 @@ class TasksTable extends Component {
           <Table.Body>
             {_.map(data, ({ id, owner, state, date, description }) => (
               <Table.Row key={id}>
-                <Table.Cell>{date}</Table.Cell>
+                <Table.Cell>{moment(date).format('YYYY-MM-DD HH:mm:ss')}</Table.Cell>
                 <Table.Cell>{description}</Table.Cell>
                 <Table.Cell>{owner}</Table.Cell>
                 <Table.Cell>{state}</Table.Cell>

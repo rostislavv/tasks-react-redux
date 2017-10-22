@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Grid, Header, Container, Divider }  from 'semantic-ui-react';
-import { Button,  Form } from 'semantic-ui-react'
+import { Button,  Form, Message} from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
 import { isLoggedIn } from '../../lib/auth';
@@ -22,7 +22,6 @@ class Login extends Component {
   }
 
   componentWillUpdate() {
-    console.log('Login update', isLoggedIn());
     if (isLoggedIn()) {
       this.props.history.push('/tasks')
     }
@@ -50,7 +49,7 @@ class Login extends Component {
             <Header size='medium' textAlign='center' style={{ 'marginTop' : 10}}>
               Login
             </Header>
-            <Form style={{ 'marginTop' : 25 }}>
+            <Form style={{ 'marginTop' : 25 }} error={this.props.error}>
               <Form.Field>
                 <label>Login</label>
                 <input value={this.state.login} onChange={this.changeUsername} placeholder='Login' />
@@ -59,6 +58,11 @@ class Login extends Component {
                 <label>Password</label>
                 <input value={this.state.pass} onChange={this.changePassword} type='password' placeholder='Password' />
               </Form.Field>
+              {
+                this.props.error ? <Message
+                  error
+                  content={this.props.message}/> : ''
+                }
               <Button type='submit' onClick={this.handleClick}>
                 Submit
               </Button>

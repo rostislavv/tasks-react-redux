@@ -13,7 +13,7 @@ router.get('/tasks',
          rowid as id,
          owner, performer, state, date, description
        FROM tasks WHERE owner = ? OR performer = ?`,
-       [req.user.username], false)
+       [req.user.username, req.user.username], false)
     .then(result => {
       res.json(result);
     })

@@ -29,13 +29,13 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(user, done) {
-  done(null, user);
-  /*console.log('calling deserialize user function');
+  //done(null, user);
+  console.log('calling deserialize user function');
   query('SELECT rowid as id, username, password FROM users WHERE rowid = ? ', [user.id])
     .then((user) => {
       console.log('USER' , user);
       done(null, user);
-    })*/
+    })
   });
 
 function loggedIn(req, res, next) {

@@ -1,7 +1,4 @@
 import fetch from 'isomorphic-fetch'
-import { clearCookie } from '../lib/auth';
-//import history from '../lib/history';
-//history.push('/');
 
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -9,8 +6,8 @@ export const LOGIN_FAILED = 'LOGIN_FAILED';
 export const LOGOUT = 'LOGOUT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const LOGOUT_FAILED = 'LOGOUT_FAILED';
-//action creators
 
+//action creators
 export function loginActionCreator(username, password){
   return {
     type: LOGIN,
@@ -58,7 +55,6 @@ const encodeParams = params => Object.keys(params).map((key) => {
   return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
 }).join('&');
 
-// TODO - USE HERE FAIL ACTION CREATORS???
 export function fetchLogin(username, password) {
   return dispatch => {
     dispatch(loginActionCreator(username, password))
@@ -66,7 +62,6 @@ export function fetchLogin(username, password) {
       method: 'POST',
       type: 'form',
       credentials: 'same-origin',
-      //mode: 'cors',
       headers: {
         Authorization: 'Basic ANsdf23fvjbggy2345opx3[s23d4v4ji',
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

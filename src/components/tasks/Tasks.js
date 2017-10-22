@@ -5,8 +5,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { Button }  from 'semantic-ui-react';
+import { Header, Container, Divider, Icon }  from 'semantic-ui-react';
 
 import { fetchLogout } from '../../actions/auth-actions';
+
+import TasksTable from './Table';
 
 class Tasks extends Component {
   constructor(props) {
@@ -31,14 +34,18 @@ class Tasks extends Component {
   }
   render() {
     return (
-    <div>
-      <Button content='Log out' onClick={this.logOut} />
-      <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-      </ul>
-    </div>
+      <Container>
+        <div  style={{ 'display' : 'block', 'height' : 45}}>
+            <Header style={{ 'marginTop' : 15 }} floated='left' size='large'>Tasks</Header>
+            <Button style={{ 'marginTop' : 15 }} floated='right' icon onClick={this.logOut} >
+              <Icon name='sign out' /> Logout
+            </Button>
+       </div>
+        <Divider/>
+        <Header size='small'>Your and assigned to you tasks</Header>
+        <div></div>
+        <TasksTable/>
+      </Container>
     )
   }
 }

@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import { encodeParams } from '../lib/encode';
 
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -23,11 +24,10 @@ export function loginSuccessActionCreator(username){
   }
 }
 
-export function loginFailedActionCreator(err) {
+export function loginFailedActionCreator(message) {
   return {
     type: LOGIN_FAILED,
-    code: err.res ? err.res.body.code : err.status,
-    message: err.res ? err.res.body.code : err.message,
+    message
   }
 }
 
@@ -51,10 +51,6 @@ export function logoutFailedActionCreator(message) {
 }
 
 
-const encodeParams = params => Object.keys(params).map((key) => {
-  return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
-}).join('&');
-
 export function fetchLogin(username, password) {
   return dispatch => {
     dispatch(loginActionCreator(username, password))
@@ -68,9 +64,16 @@ export function fetchLogin(username, password) {
       },
       body : encodeParams({username: username, password: password}),
     })
-    .then(response => response.json())
+    .then(response => {
+      console.log('response', response);
+      if(!response.ok){
+        throw Error(response.statusText);
+      } else {
+         response.json()
+      }
+    })
     .then(({ username }) => dispatch(loginSuccessActionCreator(username)))
-    .catch(err => dispatch(loginFailedActionCreator(err)))
+    .catch(err => dispatch(loginFailedActionCreator(err.message)))
   }
 }
 

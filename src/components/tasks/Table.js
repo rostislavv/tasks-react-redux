@@ -3,8 +3,15 @@ import React, { Component } from 'react'
 import { Table, Button, Icon } from 'semantic-ui-react'
 import PropTypes from 'prop-types';
 
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { fetchTasks } from '../../actions/tasks-actions';
+import {
+  fetchTask, openModal, closeModal,
+  currentSet, fetchDeleteTask
+} from '../../actions/task-actions';
+
+import ConfirmModal from './ConfirmModal';
 
 class TasksTable extends Component {
   state = {
@@ -18,6 +25,25 @@ class TasksTable extends Component {
   }
   componentWillReceiveProps({tasks}){
     this.setState({ data: tasks })
+  }
+
+  deleteTask(id) {
+    this.refs.confirm.handleOpen(() => {
+      this.props.dispatch(fetchDeleteTask(id));
+    });
+  }
+
+  showModal(type, id) {
+    if(type === 'edit') {
+      this.props.dispatch(
+        currentSet(
+          _.find(this.props.tasks, { id })
+        )
+      )
+    } else {
+      this.props.dispatch(currentSet());
+    }
+    this.props.dispatch(openModal(type));
   }
 
   handleSort = clickedColumn => () => {
@@ -40,59 +66,65 @@ class TasksTable extends Component {
   render() {
     const { column, data, direction } = this.state
     return (
-      <Table sortable celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell
-              sorted={column === 'date' ? direction : null}
-              onClick={this.handleSort('date')}>
-              Date
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'description' ? direction : null}
-              onClick={this.handleSort('description')}>
-              Description
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'owner' ? direction : null}
-              onClick={this.handleSort('owner')}>
-              Owner
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'state' ? direction : null}
-              onClick={this.handleSort('state')}>
-              State
-            </Table.HeaderCell>
-            <Table.HeaderCell>
-              Edit
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {_.map(data, ({ id = 0, owner, state, date, description }) => (
-            <Table.Row key={date + Math.random(0,10)}>
-              <Table.Cell>{date}</Table.Cell>
-              <Table.Cell>{description}</Table.Cell>
-              <Table.Cell>{owner}</Table.Cell>
-              <Table.Cell>{state}</Table.Cell>
-              <Table.Cell  textAlign='right' width='1'>
-                <Button icon size='small' color='green' onClick={() => console.log('Edit of ', id)}>
-                  <Icon name='edit' />
-                </Button>
-              </Table.Cell>
+      <div>
+        <Table sortable celled selectable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell
+                sorted={column === 'date' ? direction : null}
+                onClick={this.handleSort('date')}>
+                Date
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === 'description' ? direction : null}
+                onClick={this.handleSort('description')}>
+                Description
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === 'owner' ? direction : null}
+                onClick={this.handleSort('owner')}>
+                Owner
+              </Table.HeaderCell>
+              <Table.HeaderCell
+                sorted={column === 'state' ? direction : null}
+                onClick={this.handleSort('state')}>
+                State
+              </Table.HeaderCell>
+              <Table.HeaderCell>
+                Delete
+              </Table.HeaderCell>
             </Table.Row>
-          ))}
-        </Table.Body>
-        <Table.Footer fullWidth>
-          <Table.Row>
-            <Table.HeaderCell colSpan='5'>
-              <Button floated='right' icon labelPosition='left' primary size='small'>
-                <Icon name='tasks' /> Add Task
-              </Button>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
+          </Table.Header>
+          <Table.Body>
+            {_.map(data, ({ id, owner, state, date, description }) => (
+              <Table.Row key={id}>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{moment(date).format('YYYY-MM-DD HH:mm:ss')}</Table.Cell>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{description}</Table.Cell>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{owner}</Table.Cell>
+                <Table.Cell onClick={() => this.showModal('edit', id)}>{state}</Table.Cell>
+                <Table.Cell  textAlign='right' width='1'>
+                  <Button icon size='small' color='red'
+                    onClick={() => this.deleteTask(id)}>
+                    <Icon name='delete' />
+                  </Button>
+                </Table.Cell>
+              </Table.Row>
+            ))}
+          </Table.Body>
+          <Table.Footer fullWidth>
+            <Table.Row>
+              <Table.HeaderCell colSpan='5'>
+                <Button floated='right' icon
+                  labelPosition='left' primary size='small'
+                  onClick={() => this.showModal('add')}>
+                  <Icon name='tasks' /> Add Task
+                </Button>
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+        </Table>
+        <ConfirmModal ref='confirm'/>
+      </div>
     )
   }
 }
@@ -105,7 +137,7 @@ TasksTable.propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
-function mapStateToProps({tasks}) {
+function mapStateToProps({ tasks }) {
   return {
     error: tasks.error,
     loading: tasks.loading,

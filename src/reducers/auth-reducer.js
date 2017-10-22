@@ -33,7 +33,7 @@ export default (state = {
         ...state,
         loading: false,
         error: true,
-        message,
+        message: action.message
       };
     case LOGOUT:
       if (message) {

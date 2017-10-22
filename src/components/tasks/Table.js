@@ -66,11 +66,14 @@ class TasksTable extends Component {
             <Table.HeaderCell>
               Edit
             </Table.HeaderCell>
+            <Table.HeaderCell>
+              Delete
+            </Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {_.map(data, ({ id = 0, owner, state, date, description }) => (
-            <Table.Row key={date + Math.random(0,10)}>
+          {_.map(data, ({ id, owner, state, date, description }) => (
+            <Table.Row key={id}>
               <Table.Cell>{date}</Table.Cell>
               <Table.Cell>{description}</Table.Cell>
               <Table.Cell>{owner}</Table.Cell>
@@ -80,12 +83,17 @@ class TasksTable extends Component {
                   <Icon name='edit' />
                 </Button>
               </Table.Cell>
+              <Table.Cell  textAlign='right' width='1'>
+                <Button icon size='small' color='red' onClick={() => console.log('Delete of ', id)}>
+                  <Icon name='delete' />
+                </Button>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
         <Table.Footer fullWidth>
           <Table.Row>
-            <Table.HeaderCell colSpan='5'>
+            <Table.HeaderCell colSpan='6'>
               <Button floated='right' icon labelPosition='left' primary size='small'>
                 <Icon name='tasks' /> Add Task
               </Button>

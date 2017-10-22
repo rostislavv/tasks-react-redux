@@ -33,6 +33,8 @@ router.post('/tasks', (req, res) => {
       req.body.description
      ])
    .then(result => {
+     var io = req.app.get('socketio');
+     io.emit('tasks:updated');
      res.json({message: 'Successfully saved'});
    })
 })
@@ -54,6 +56,9 @@ router.post('/tasks/:id',(req, res) => {
       req.params.id
      ])
    .then(result => {
+     var io = req.app.get('socketio');
+     io.emit('tasks:updated');
+     console.log('Task posted - emit emited');
      res.json({message: 'Successfully updated'});
    })
 })
@@ -61,6 +66,8 @@ router.post('/tasks/:id',(req, res) => {
 router.delete('/tasks/:id', (req, res) => {
   run(`DELETE FROM tasks WHERE rowid = ?`, req.params.id)
     .then(result => {
+      var io = req.app.get('socketio');
+      io.emit('tasks:updated');
       res.json({message: 'Successfully deleted'});
     })
 })

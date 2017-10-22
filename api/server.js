@@ -9,8 +9,6 @@ const passport = require('passport');
 const config = require('../config/server');
 const router = require('./router');
 const app = express();
-const http = require('http');
-
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -39,4 +37,19 @@ app.use(passport.session());
 app.use('/static',express.static(path.resolve(__dirname, '../build/static/')));
 app.use('/', router);
 
-module.exports = http.createServer(app);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  socket.on('tasks:updated:consumed', () => {
+    console.log('Client got updates')
+  })
+});
+
+app.set('socketio', io);
+
+module.exports = http;

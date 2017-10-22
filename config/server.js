@@ -1,5 +1,7 @@
 module.exports = {
-  port: 5000,
+  port : function() {
+    return process.env.PORT || 5000;
+  },
   session: {
       fileStoreOptions: {
         path: './sessions',

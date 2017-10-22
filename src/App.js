@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'react-notifications/lib/notifications.css';
 
 import { Switch, Route } from 'react-router-dom'
 import Tasks from './components/tasks/Tasks'

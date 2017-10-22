@@ -8,6 +8,7 @@ import { Button }  from 'semantic-ui-react';
 import { Header, Container, Divider, Icon, Modal }  from 'semantic-ui-react';
 
 import { fetchLogout } from '../../actions/auth-actions';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 import TasksTable from './Table';
 import TaskModal from './Modal';
@@ -47,6 +48,7 @@ class Tasks extends Component {
         <div></div>
         <TasksTable/>
         <TaskModal/>
+        <NotificationContainer/>
       </Container>
     )
   }

@@ -11,9 +11,21 @@ import {
   currentSet, fetchDeleteTask
 } from '../../actions/task-actions';
 
+import { subscribeToTimer, subscribeToUpdates } from '../../lib/socket';
+
+import { NotificationManager } from 'react-notifications';
+
 import ConfirmModal from './ConfirmModal';
 
 class TasksTable extends Component {
+  constructor(props){
+    super(props);
+
+    subscribeToUpdates(() => {
+      NotificationManager.info('Warning message', 'Tasks were updated', 3000);
+      this.props.dispatch(fetchTasks())
+    })
+  }
   state = {
     column: null,
     data: [],
@@ -21,7 +33,8 @@ class TasksTable extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch(fetchTasks());
+    const { dispatch } = this.props;
+    dispatch(fetchTasks());
   }
   componentWillReceiveProps({tasks}){
     this.setState({ data: tasks })

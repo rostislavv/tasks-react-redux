@@ -149,6 +149,13 @@ function runDevServer(port) {
     quiet: true,
     watchOptions: {
       ignored: /node_modules/
+    },
+    proxy: {
+      "/api/**": {
+        "target": 'http://localhost:5000/',
+        changeOrigin: true,
+        secure: false
+      }
     }
   }).listen(port, (err, result) => {
     if (err) {

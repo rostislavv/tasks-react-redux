@@ -6,8 +6,11 @@ router.get('/tasks',
   loggedIn,
   (req, res) => {
     res.json([
-      {name: 'task1', owner: 'admin', id: 1},
-      {name: 'task2', owner: 'user', id: 2},
+     { owner: 'admin', performer: 'admin',
+       state: 'open', date: '22.10.2017',
+       description: 'Do stuff'},
+       { owner: 'admin', performer: 'user', state: 'done', date: '21.10.2017', description: 'Done stuff'},
+       { owner: 'admin', performer: 'user', state: 'done', date: '20.10.2017', description: 'New task'}
     ]);
   }
 );

@@ -5,9 +5,7 @@ import { Button,  Form } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
 import { isLoggedIn } from '../../lib/auth';
-
 import { fetchLogin } from '../../actions/auth-actions';
-
 import { withRouter } from 'react-router-dom'
 
 

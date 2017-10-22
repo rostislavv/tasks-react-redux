@@ -1,38 +1,33 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
 import { Table, Button, Icon } from 'semantic-ui-react'
+import PropTypes from 'prop-types';
 
-const tableData = [
-  { name: 'John', age: 15, gender: 'Male' },
-  { name: 'Amber', age: 40, gender: 'Female' },
-  { name: 'Leslie', age: 25, gender: 'Female' },
-  { name: 'Ben', age: 70, gender: 'Male' },
-]
+import { connect } from 'react-redux';
+import { fetchTasks } from '../../actions/tasks-actions';
 
-const tasks = [
-  { owner: 'admin', performer: 'admin',
-  state: 'open', date: '22.10.2017',
-  description: 'Do stuff'},
-  { owner: 'admin', performer: 'user', state: 'done', date: '21.10.2017', description: 'Done stuff'}
-];
-
-export default class TasksTable extends Component {
+class TasksTable extends Component {
   state = {
     column: null,
-    data: tasks,
+    data: [],
     direction: null,
+  }
+
+  componentWillMount() {
+    this.props.dispatch(fetchTasks());
+  }
+  componentWillReceiveProps({tasks}){
+    this.setState({ data: tasks })
   }
 
   handleSort = clickedColumn => () => {
     const { column, data, direction } = this.state
-
     if (column !== clickedColumn) {
       this.setState({
         column: clickedColumn,
         data: _.sortBy(data, [clickedColumn]),
         direction: 'ascending',
       })
-
       return
     }
 
@@ -44,7 +39,6 @@ export default class TasksTable extends Component {
 
   render() {
     const { column, data, direction } = this.state
-
     return (
       <Table sortable celled>
         <Table.Header>
@@ -102,3 +96,22 @@ export default class TasksTable extends Component {
     )
   }
 }
+
+
+TasksTable.propTypes = {
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  tasks: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired,
+}
+
+function mapStateToProps({tasks}) {
+  return {
+    error: tasks.error,
+    loading: tasks.loading,
+    tasks: tasks.tasks,
+    message: tasks.message
+  }
+}
+
+export default connect(mapStateToProps)(TasksTable);

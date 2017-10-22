@@ -12,6 +12,7 @@ db.serialize(function() {
     {username: 'user', password: 'user'}
   ]
 
+  console.log('db creation process');
   const encode = password => crypto.createHash('md5').update(password).digest('hex');
   users.forEach(({ username, password }) => console.log(username, encode(password)));
   users.forEach(({ username, password }) => stmt.run(username, encode(password)));

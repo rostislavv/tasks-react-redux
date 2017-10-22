@@ -10,6 +10,7 @@ module.exports = {
       secret: 'zZ5VrhB3452lbv4Vd1K6d5r2qS8x37HV',
       name: 'cid',
       cookie: {
+        secure: false,
         path: '/',
         httpOnly: true,
         maxAge: 3600 * 1000 * 24,

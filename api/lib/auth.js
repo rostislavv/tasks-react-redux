@@ -7,10 +7,9 @@ const { query } = require('../database');
 passport.use(new LocalStrategy(
   (username, password, done) => {
     const pass = crypto.createHash('md5').update(password).digest('hex');
-console.log('debug');
+
     query('SELECT rowid as id, username, password FROM users WHERE username = ?', [username])
       .then((user) => {
-        console.log('user', user);
         if (!user) {
           return done(null, false, { message: 'Incorrect username.' });
         }
@@ -26,14 +25,17 @@ console.log('debug');
 ));
 
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
-  query('SELECT rowid as id, username, password FROM users WHERE rowid = ? ', [id])
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+  /*console.log('calling deserialize user function');
+  query('SELECT rowid as id, username, password FROM users WHERE rowid = ? ', [user.id])
     .then((user) => {
+      console.log('USER' , user);
       done(null, user);
-    })
+    })*/
   });
 
 function loggedIn(req, res, next) {

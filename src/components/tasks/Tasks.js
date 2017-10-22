@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { Button }  from 'semantic-ui-react';
-import { Header, Container, Divider, Icon }  from 'semantic-ui-react';
+import { Header, Container, Divider, Icon, Modal }  from 'semantic-ui-react';
 
 import { fetchLogout } from '../../actions/auth-actions';
 
 import TasksTable from './Table';
+import TaskModal from './Modal';
 
 class Tasks extends Component {
-  constructor(props) {
+    constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
   }
@@ -45,6 +46,7 @@ class Tasks extends Component {
         <Header size='small'>Your and assigned to you tasks</Header>
         <div></div>
         <TasksTable/>
+        <TaskModal/>
       </Container>
     )
   }

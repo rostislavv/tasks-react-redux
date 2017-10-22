@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { fetchTasks } from '../../actions/tasks-actions';
+import { fetchTask, openModal, closeModal } from '../../actions/task-actions';
 
 class TasksTable extends Component {
   state = {
@@ -18,6 +19,10 @@ class TasksTable extends Component {
   }
   componentWillReceiveProps({tasks}){
     this.setState({ data: tasks })
+  }
+
+  showModal(type) {
+    this.props.dispatch(openModal(type));
   }
 
   handleSort = clickedColumn => () => {
@@ -79,12 +84,14 @@ class TasksTable extends Component {
               <Table.Cell>{owner}</Table.Cell>
               <Table.Cell>{state}</Table.Cell>
               <Table.Cell  textAlign='right' width='1'>
-                <Button icon size='small' color='green' onClick={() => console.log('Edit of ', id)}>
+                <Button icon size='small' color='green'
+                  onClick={() => this.showModal('edit')}>
                   <Icon name='edit' />
                 </Button>
               </Table.Cell>
               <Table.Cell  textAlign='right' width='1'>
-                <Button icon size='small' color='red' onClick={() => console.log('Delete of ', id)}>
+                <Button icon size='small' color='red'
+                  onClick={() => console.log('Delete of ', id)}>
                   <Icon name='delete' />
                 </Button>
               </Table.Cell>
@@ -94,7 +101,9 @@ class TasksTable extends Component {
         <Table.Footer fullWidth>
           <Table.Row>
             <Table.HeaderCell colSpan='6'>
-              <Button floated='right' icon labelPosition='left' primary size='small'>
+              <Button floated='right' icon
+                labelPosition='left' primary size='small'
+                onClick={() => this.showModal('add')}>
                 <Icon name='tasks' /> Add Task
               </Button>
             </Table.HeaderCell>
@@ -113,7 +122,7 @@ TasksTable.propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
-function mapStateToProps({tasks}) {
+function mapStateToProps({ tasks }) {
   return {
     error: tasks.error,
     loading: tasks.loading,

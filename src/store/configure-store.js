@@ -10,6 +10,7 @@ const enhancers = compose(
 
 const loggerMiddleware = createLogger()
 
+// TODO - loggerMiddleware should be removed on production build!!!!
 export default function configureStore(preloadedState) {
   return createStore(
     rootReducer,

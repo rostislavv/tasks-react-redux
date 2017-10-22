@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { Grid, Header }  from 'semantic-ui-react';
+import { Grid, Header, Container, Divider }  from 'semantic-ui-react';
 import { Button,  Form } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
@@ -43,28 +43,32 @@ class Login extends Component {
   }
   render() {
     return (
-    <Grid columns='equal'>
-      <Grid.Column></Grid.Column>
-      <Grid.Column>
-        <Header size='medium' textAlign='center' style={{ 'marginTop' : 10}}>
-          Login
-        </Header>
-        <Form style={{ 'marginTop' : 25 }}>
-          <Form.Field>
-            <label>Login</label>
-            <input value={this.state.login} onChange={this.changeUsername} placeholder='Login' />
-          </Form.Field>
-          <Form.Field>
-            <label>Password</label>
-            <input value={this.state.pass} onChange={this.changePassword} type='password' placeholder='Password' />
-          </Form.Field>
-          <Button type='submit' onClick={this.handleClick}>
-            Submit
-          </Button>
-        </Form>
-        </Grid.Column>
-      <Grid.Column></Grid.Column>
-    </Grid>
+      <Container>
+        <Header style={{ 'marginTop': 15 }} size='large'>Tasks</Header>
+        <Divider/>
+        <Grid columns='equal'>
+          <Grid.Column></Grid.Column>
+          <Grid.Column>
+            <Header size='medium' textAlign='center' style={{ 'marginTop' : 10}}>
+              Login
+            </Header>
+            <Form style={{ 'marginTop' : 25 }}>
+              <Form.Field>
+                <label>Login</label>
+                <input value={this.state.login} onChange={this.changeUsername} placeholder='Login' />
+              </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <input value={this.state.pass} onChange={this.changePassword} type='password' placeholder='Password' />
+              </Form.Field>
+              <Button type='submit' onClick={this.handleClick}>
+                Submit
+              </Button>
+            </Form>
+            </Grid.Column>
+          <Grid.Column></Grid.Column>
+        </Grid>
+    </Container>
     )
   }
 }

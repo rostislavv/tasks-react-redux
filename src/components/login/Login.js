@@ -20,11 +20,17 @@ export class Login extends Component {
       pass: ''
     }
   }
-
-  componentWillUpdate() {
+  redirect() {
     if (isLoggedIn()) {
       this.props.history.push('/tasks')
     }
+  }
+
+  componentWillUpdate() {
+    this.redirect();
+  }
+  componentDidMount(){
+    this.redirect();
   }
 
   changeUsername(e) {

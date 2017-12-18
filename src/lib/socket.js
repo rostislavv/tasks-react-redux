@@ -1,6 +1,7 @@
 import { port } from '../../config/server';
 import openSocket from 'socket.io-client';
-const  socket = openSocket('http://localhost:' + port());
+//const  socket = openSocket('https://localhost:' + port(), {secure: true});
+const socket = openSocket('https://intense-spire-42936.herokuapp.com',{secure: true, port:port()});
 
 export function subscribeToTimer(cb) {
   socket.on('timer', timestamp => cb(null, timestamp));

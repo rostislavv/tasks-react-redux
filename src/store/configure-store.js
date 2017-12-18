@@ -17,9 +17,9 @@ export default function configureStore(preloadedState) {
     preloadedState,
     applyMiddleware(
       thunkMiddleware,
-      //loggerMiddleware
+      loggerMiddleware
     ),
-    enhancers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    enhancers
+    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 }

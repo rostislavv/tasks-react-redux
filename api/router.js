@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.use('/api/', require('./routes/auth'));
 router.use('/api/', require('./routes/tasks'));
+router.use('/api/', require('./routes/regression'));
 
 router.get('*', (req, res, next) => {
   if (req.url === '/favicon.ico') return next();

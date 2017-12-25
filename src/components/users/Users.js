@@ -5,9 +5,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { Button }  from 'semantic-ui-react';
-import { Header, Container, Divider, Icon, Modal }  from 'semantic-ui-react';
+import { Header, Container, Divider, Icon }  from 'semantic-ui-react';
 
 import { fetchLogout } from '../../actions/auth-actions';
+import Table from './Table';
+import Modal from './Modal';
 
 
 class Users extends Component {
@@ -43,9 +45,8 @@ class Users extends Component {
         <Divider/>
         <Header size='small'>Your and assigned to you tasks</Header>
         <div></div>
-        <div>
-          <h1>hello</h1>
-        </div>
+        <Table />
+        <Modal />
       </Container>
     )
   }

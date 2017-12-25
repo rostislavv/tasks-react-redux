@@ -1,0 +1,427 @@
+[
+  {
+    "userInfo": {
+        "name": "Dana",
+        "surname": "Savchuk",
+        "age": "23",
+        "gender": "female",
+        "maritalStatus": "Married",
+        "university": "ZSTU",
+        "school": "Stetkivtsi",
+        "city": "Zhytomyr",
+        "profession": "Web Developer"
+    },
+    "posts":[
+      {
+        "postDate": "2017-09-12T22:46:16",
+        "text":"#winter #pond #grass #landscape"
+      },
+      {
+        "postDate": "2017-09-12T23:46:16",
+        "text":"That's very awesome, autocheck in-case"
+      },
+      {
+        "postDate": "2017-09-13T22:46:16",
+        "text":"#tree #shadow #autumn #landscape"
+      },
+      {
+        "postDate": "2017-09-14T22:46:16",
+        "text":"I personally think that graphql is the best API i've ever used. It's so simple and frontend-friendly!"
+      },
+      {
+        "postDate": "2017-10-15T09:46:56",
+        "text":"One of my favorite images. Taken in Poland a while back."
+      },
+      {
+        "postDate": "2017-10-15T11:33:56",
+        "text":"V8 has native support for JavaScript code coverage. Tools like ChromeDevTools and Istanbul can now access V8’s coverage information without instrumenting the code!"
+      },
+       {
+        "postDate": "2017-10-16T08:46:41",
+        "text":"Nikon D810 & Nikon 24-70mm f2.8 + Singh Ray VariNTrio Filter. Exposure 1/30-f14, ISO 400, Aperture Priority, 0 EV, Manfrotto 055CX Pro4 Tripod, Acratech Headball. For full appreciation view in FULL SCREEN"
+      },
+      {
+        "postDate": "2017-10-16T16:12:41",
+        "text":"Sometimes i re-read books i already read and this time is was CSS Secrets by LeaVerou. Absolutely love this book, some of the tricks were forgotten and recalling them is very important"
+      },
+      {
+        "postDate": "2017-10-17T08:46:11",
+        "text":"My photo just won a 'Best of the Month' award on Pixoto.com! http://www.pixoto.com/awards/6644604639379456"
+      },
+      {
+        "postDate": "2017-10-17T22:46:11",
+        "text":"It's very nice that React team tries to coordinate their project with other popular projects"
+      },
+      {
+        "postDate": "2017-10-17T08:46:11",
+        "text":"My photo just won a 'Best of the Month' award on Pixoto.com! http://www.pixoto.com/awards/6644604639379456"
+      },
+
+      {
+        "postDate": "2017-12-03T17:02:11",
+        "text":"How do you render React to string? (without ReactServer)"
+      },
+      {
+        "postDate": "2017-12-07T03:05:11",
+        "text":"My photo just won a 'Best of the Week' award on Pixoto.com! http://www.pixoto.com/awards/5790261614739456"
+      }
+    ],
+    "trips":[
+      {
+        "date": "2013-07-21",
+        "city": "Lviv",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2014-07-24",
+        "city": "Lviv",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2014-07-24",
+        "city": "Jaremche",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2015-08-09",
+        "city": "Jaremche",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2016-05-28",
+        "city": "Krakow",
+        "country": "Poland",
+        "score": "5"
+      },
+      {
+        "date": "2016-10-28",
+        "city": "Wroclaw",
+        "country": "Poland",
+        "score": "4"
+      }
+    ]
+  },
+  {
+    "userInfo": {
+        "name": "Julia",
+        "surname": "Omelczuk",
+        "age": "26",
+        "gender": "female",
+        "maritalStatus": "Married",
+        "university": "ZNAU",
+        "school": "Zhytomyr,23",
+        "profession": "Nailmaster"
+    },
+    "posts":[
+      {
+        "postDate": "2017-12-02T13:15:17",
+        "text":"Here I am again after this long break I've made.... What can I say? Probably it's been a needed break or else. I've posted this design while ago at my IG account and it's the perfect time to say some more about it. The star of this design is a fantastic stamping plate I've received couple of months ago. I have always been a great fan of steampunk themed designs. When I saw BPX L023 at the store the hungry monster deep inside has been awaken. The need to try new interesting nail  art products was still alive somewhere there. And when Alice from Born Pretty Store offered me to give it a try I just couldn't resist. The plate has full pack of bold steampunk patterns  with crisp lines and magnificient details. To transfer the image on the nails was easy even for a newbie as myself. I would definitely keep working over my stamping skill because plates like this really deserve to be used more often..."
+      },
+      {
+        "postDate": "2017-12-04T12:15:11",
+        "text":"Same gel polish used here."
+      },
+       {
+        "postDate": "2017-12-04T12:12:11",
+        "text":"The gel polish used here is Bluesky 504+535, 501."
+      },
+      {
+        "postDate": "2017-12-05T01:12:11",
+        "text":"SWAROVSKI. Frozen Nails"
+      },
+      {
+        "postDate": "2017-12-06T01:19:11",
+        "text":"A special customer. Music music"
+      },
+      {
+        "postDate": "2017-12-13T18:01:11",
+        "text":"#nails #juliaomelchuk"
+      },
+      {
+        "postDate": "2017-12-13T01:09:11",
+        "text":"Beauty nails for Ann"
+      }
+
+    ],
+    "trips":[
+      {
+        "date": "2014-12-04",
+        "city": "Lviv",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2015-03-09",
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2015-05-09",
+        "city": "Vinnyca",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2016-01-24",
+        "city": "Jaremche",
+        "country": "Ukraine",
+        "score": "5"
+      }
+    ]
+  },
+  {
+    "userInfo": {
+        "name": "Max",
+        "surname": "Kruk",
+        "age": "27",
+        "gender": "male",
+        "maritalStatus": "Single",
+        "university": "MUU",
+        "school": "Kyiv, 5",
+        "profession": "Driver"
+    },
+    "posts":[
+       {
+        "postDate": "2017-11-17T01:33:14",
+        "text":"A British coachbuilding company has nearly completed the build of its first Tesla Model S Shooting Brake, which it has called the P90D-SB.The car's exterior is now completed and it has been started and moved. It remains connected to the Tesla network and therefore retains the digital systems of the regular car."
+      },
+      {
+        "postDate": "2017-11-15T12:33:14",
+        "text":"The Mercedes-Benz X-Class is expensive for a pick-up, but it lifts the bar on commercial vehicle comfort while retaining tough qualities"
+      },
+      {
+        "postDate": "2017-11-14T12:23:54",
+        "text":"The best rest with friends."
+      },
+      {
+        "postDate": "2017-11-14T12:22:54",
+        "text":"Test drive in Kyiw. BMV."
+      },
+      {
+        "postDate": "2017-11-13T01:09:11",
+        "text":"This car is cool!"
+      }
+    ],
+    "trips":[
+      {
+        "date": "2013-01-08",
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2013-04-28",
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2013-02-08",
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "score": "3"
+      },
+
+      {
+        "date": "2016-08-24",
+        "city": "Odessa",
+        "country": "Ukraine",
+        "score": "4"
+      },
+
+      {
+        "date": "2016-11-24",
+        "city": "Dnipro",
+        "country": "Ukraine",
+        "score": "4"
+      }
+    ]
+
+  },
+  {
+    "userInfo": {
+        "name": "Ksenia",
+        "surname": "Dymchenko",
+        "age": "36",
+        "gender": "female",
+        "maritalStatus": "Married",
+        "university": "",
+        "school": "Kyiv",
+        "profession": "Yoga coach"
+    },
+    "posts":[
+      {
+        "postDate": "2017-12-01T15:45:54",
+        "text":"The opportunity to travel is often a life-changing experience. But, travel can also be fairly stressful – both physically and mentally.New experiences and things not going quite as planned can cause feelings of fear and anxiety.This is where yoga comes in. Yoga teaches us how to breathe amidst the chaos, and it provides a space for quiet reflection amidst the noise."
+      },
+      {
+        "postDate": "2017-12-02T15:55:10",
+        "text":"When your mornings feel like this on a consistent basis, managing anxiety can feel like an uphill battle. The solution? Create a routine — and not just any routine, but one that's specifically tailored to quell stress."
+      },
+      {
+        "postDate": "2017-12-02T16:12:10",
+        "text":"We all love a good meme. These 7 yoga memes have us giggling like little school girls. Which one is your favorite?"
+      },
+      {
+        "postDate": "2017-12-04T13:12:16",
+        "text":"We can’t help you with the screaming child in the aisle seat to your left, but we can help you eat well. Arrive to the gate armed with an arsenal of these nourishing, satisfying snacks, and pray the in-flight entertainment stands up to the tasty eats."
+      },
+      {
+        "postDate": "2017-12-04T13:13:16",
+        "text":"Stretching has a way of melting away stress and worry, but there's no need to unroll your yoga mat.Here are nine stretches you can do in your pajamas and your bed — either before you go to sleep or once your alarm goes off — or both! Do all nine if you have time, or just pick a few.Either way, you'll feel more relaxed, whether you're heading to the land of nod or waking with the sun."
+      },
+      {
+        "postDate": "2017-12-06T13:13:16",
+        "text":"When we declutter, we feel more organized and in control of our lives. We clear out old, stagnant energy and create space – physically and emotionally. It feels good to go through your things and make a pile of what you no longer need.Minimalism, with its foundation rooted in living with only what we need, has it right in this sense – by cleansing our space of the inevitable clutter that builds up over time, we cleanse our mental, emotional, and psychological space too."
+      }
+    ],
+    "trips":[
+      {
+        "date": "2015-09-01",
+        "city": "Ternopil",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2015-09-03",
+        "city": "Lviv",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2015-12-01",
+        "city": "Krakow",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2016-03-01",
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2016-04-27",
+        "city": "Vinnyca",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2016-04-28",
+        "city": "Zhytomyr",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2016-04-28",
+        "city": "Zhytomyr",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2014-05-18",
+        "city": "Paris",
+        "country": "France",
+        "score": "5"
+      }
+    ]
+  },
+
+  {
+    "userInfo": {
+        "name": "Taras",
+        "surname": "Nechypuruck",
+        "age": "35",
+        "gender": "male",
+        "maritalStatus": "Dating",
+        "university": "NUWMNR",
+        "school": "Netishyn",
+        "profession": "photographer"
+    },
+    "posts":[
+      {
+        "postDate": "2017-12-11T09:45:54",
+        "text":"Things have been crazy busy for us in 2017, but we are super excited to share some recent news that Jessica Thiessen once again finished in the top 25 in Canada, finishing 12th this year in the Professional Wedding Photographers of Canada annual rankings!She finished 1st in Edmonton, 4th in Alberta, and 12th in Canada!We will be sharing some more of her winning images soon!"
+      },
+      {
+        "postDate": "2017-12-12T10:55:10",
+        "text":"Jasmin Imran. Deep Blue Photography"
+      },
+      {
+        "postDate": "2017-12-13T09:12:10",
+        "text":"Its not every day that you get the honour of photographing your little sister's wedding.Today we had that honour."
+      },
+      {
+        "postDate": "2017-12-14T10:12:16",
+        "text":"It doesn't get much more Swiss than this: Gruyere castle, over looking the quaint village below. Fields full of dairy cows and epic alpine mountains all around. This country is amazing."
+      },
+      {
+        "postDate": "2017-12-16T11:13:16",
+        "text":"Today marks the 6 year anniversary for the official start of Deep Blue Photography! We are currently celebrating this milestone (and both of our birthdays) with a trip to Switzerland and Iceland!We'd like to throw out a huge THANK YOU to all of our amazing clients for helping us and trusting us over the last 6 years. Without you, we would not be here today.We attempted to visit Matterhorn today, but unfortunately the weather did not cooperate, and although we reached the village at the base of the mountain, the mountain itself was completely obscured by a snowstorm.Here are a few images from the last couple of days of our time in Switzerland. So far we have visited 4 chocolatiers, hiked around a lake at a ski resort which received 30 fresh centimeters of snow the day before we arrived, visited Liechtenstein, had an amazing traditional Swiss fondue, driven almost 1000kms across an amazing country, travelled via motorail (train ferry), gondola, car, and train, and spoken 3 languages.Tomorrow we are going to geek out and visit the Large Hadron Collider at CERN, and we still have a week left in our vacation!"
+      },
+      {
+        "postDate": "2017-12-18T12:13:16",
+        "text":"Here is another teaser from Jamie and Jeff's wedding last weekend."
+      },
+      {
+        "postDate": "2017-12-21T12:13:16",
+        "text":"We've been pretty quiet lately on social media, but its only because we've been super busy trying to get caught up on all our fall family and engagement sessions! Here is the first look at Jeff & Meg's family shoot with the ridiculous Cooper!"
+      },
+      {
+        "postDate": "2017-12-22T13:13:46",
+        "text":"Rain on your wedding day is good luck because it signifies that your marriage will last. As you know, a knot that becomes wet is difficult to untie – therefore, when you “tie the knot” on a rainy day, your marriage is supposedly just as hard to unravel. Deep Blue Photography"
+      }
+    ],
+    "trips":[
+      {
+        "date": "2012-04-28",
+        "city": "Zhytomyr",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2012-04-30",
+        "city": "Rivne",
+        "country": "Ukraine",
+        "score": "4"
+      },
+      {
+        "date": "2012-06-28",
+        "city": "Kyiv",
+        "country": "Ukraine",
+        "score": "5"
+      },
+      {
+        "date": "2014-05-18",
+        "city": "Paris",
+        "country": "France",
+        "score": "5"
+      },
+      {
+        "date": "2014-05-24",
+        "city": "Lyon",
+        "country": "France",
+        "score": "3"
+      },
+      {
+        "date": "2015-06-24",
+        "city": "Mont-Saint-Michel",
+        "country": "Canada",
+        "score": "4"
+      },
+      {
+        "date": "2016-08-12",
+        "city": "Mont-Saint-Michel",
+        "country": "Canada",
+        "score": "5"
+      }
+
+    ]
+  }
+
+]
